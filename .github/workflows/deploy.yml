@@ -26,7 +26,6 @@ jobs:
             - name: Checkout source code
               uses: actions/checkout@master
 
-            # Runs a single command using the runners shell
             - name: Set up Node.js
               uses: actions/setup-node@master
               with:
@@ -35,7 +34,11 @@ jobs:
             - name: Install dependencies
               run: yarn install
 
-            # Runs a set of commands using the runners shell
+            # 나머지 : 새로운 소스 코드 푸시 신속하게 서버에서 빌드하고 배포하는 기본적인 자동화 작업
+            # 단위 테스트 Step
+            - name: Test unit
+              run: yarn test:unit
+
             - name: Build page
               run: yarn build
               env:
